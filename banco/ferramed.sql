@@ -27,18 +27,21 @@ id_formula int not null,
 foreign key(id_metrica) references metrica(id),
 foreign key(id_formula) references formula(id));
 
-create table periodo(
-id int primary key auto_increment,
-mes int not null,
-ano int not null);
+create table coleta(
+id int primary key not null auto_increment,
+id_metrica int not null,
+valor int not null,
+observacao varchar(200),
+data date,
+foreign key (id_metrica) references metrica(id));
 
 create table relatorio(
 id int primary key not null auto_increment,
 data_geracao date,
-id_periodo_inicio int not null,
-id_periodo_fim int not null,
-foreign key(id_periodo_inicio) references periodo(id),
-foreign key(id_periodo_fim) references periodo(id));
+mes_inicio int not null,
+ano_inicio int not null,
+mes_fim int not null,
+ano_fim int not null);
 
 create table relatorio_metrica(
 id int primary key auto_increment,
