@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.IndicadorDAO;
 import dao.MetricaDAO;
+import model.Indicador;
 import model.Metrica;
 
 @WebServlet("/metrica/metrica")
@@ -39,6 +41,23 @@ private static final long serialVersionUID = 1L;
 				case "atualizarMetrica":
 					editarMetrica(request, response);
 					break;
+				case "listarIndicadores":
+					IndicadorDAO iDAO = new IndicadorDAO();
+				try {
+					request.setAttribute("indicadores", iDAO.listarIndicadores());
+					try {
+						request.getRequestDispatcher("criarMetrica.jsp").forward(request, response);
+					} catch (ServletException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					
+					
+					break;
 				default:
 					break;
 			}
@@ -66,7 +85,23 @@ private static final long serialVersionUID = 1L;
 					break;
 				case "atualizarMetrica":
 					editarMetrica(request, response);
-					break;	
+					break;
+				case "listarIndicadores":
+					IndicadorDAO iDAO = new IndicadorDAO();
+				try {
+					request.setAttribute("indicadores", iDAO.listarIndicadores());
+					try {
+						request.getRequestDispatcher("criarMetrica.jsp").forward(request, response);
+					} catch (ServletException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+					
+					break;
 				default:
 					break;
 			}
@@ -86,6 +121,9 @@ private static final long serialVersionUID = 1L;
 		m.setProcessoColeta(request.getParameter("processoColeta"));
 		m.setProcessoAnalise(request.getParameter("processoAnalise"));
 		m.setTipo(request.getParameter("tipoMetrica"));
+		Indicador i = new Indicador();
+		i.setId(Integer.valueOf(request.getParameter("indicador")));
+		m.setIndicador(i);
 		
 		MetricaDAO mDAO = new MetricaDAO();
 		try {
@@ -125,16 +163,21 @@ private static final long serialVersionUID = 1L;
 		int id = Integer.valueOf(request.getParameter("id"));
 		
 		MetricaDAO mDAO = new MetricaDAO();
+		IndicadorDAO iDAO = new IndicadorDAO();
 		Metrica m;
 		try {
 			m = mDAO.getMetrica(id);
+			
 			request.setAttribute("metrica_id", m.getId());
 			request.setAttribute("metrica_nome",m.getNome());
 			request.setAttribute("metrica_tipo",m.getTipo());
 			request.setAttribute("metrica_processoColeta",m.getProcessoColeta());
 			request.setAttribute("metrica_processoAnalise",m.getProcessoAnalise());
+			request.setAttribute("metrica_id_indicador",m.getIndicador().getId());
+			request.setAttribute("indicadores",iDAO.listarIndicadores());
 			
 			request.getRequestDispatcher("editarMetrica.jsp").forward(request, response);
+			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -155,7 +198,9 @@ private static final long serialVersionUID = 1L;
 		m.setProcessoColeta(request.getParameter("processoColeta"));
 		m.setProcessoAnalise(request.getParameter("processoAnalise"));
 		m.setTipo(request.getParameter("tipoMetrica"));
-		
+		Indicador i = new Indicador();
+		i.setId(Integer.valueOf(request.getParameter("indicador")));
+		m.setIndicador(i);
 		MetricaDAO mDAO = new MetricaDAO();
 		try {
 			mDAO.editarMetrica(m);

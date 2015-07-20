@@ -3,11 +3,18 @@ package model;
 public class Metrica {
 	
 	private String processoColeta, processoAnalise, nome, tipo;
+	Indicador indicador;
 	private float valor;
 	private int id;
 	
+	public Indicador getIndicador(){
+		return indicador;
+	}
 	
-	
+	public void setIndicador(Indicador t)
+	{
+		this.indicador = t;
+	}
 	public int getId() {
 		return id;
 	}

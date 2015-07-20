@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import model.Indicador;
 import model.Metrica;
 
 import com.mysql.jdbc.Connection;
@@ -17,7 +18,7 @@ public class MetricaDAO {
 	{
 		con = ConnectionFactory.getConnection();
 		
-		String sql = "INSERT INTO metrica (processo_coleta, processo_analise, valor, tipo, nome) values (?,?,?,?,?)";
+		String sql = "INSERT INTO metrica (processo_coleta, processo_analise, valor, tipo, nome, id_indicador) values (?,?,?,?,?,?)";
 		
 	
 		
@@ -27,6 +28,7 @@ public class MetricaDAO {
 			ps.setFloat(3,m.getValor());
 			ps.setString(4,m.getTipo());
 			ps.setString(5, m.getNome());
+			ps.setInt(6,m.getIndicador().getId());
 			
 			ps.executeUpdate();
 			
@@ -93,6 +95,9 @@ public class MetricaDAO {
 				m.setProcessoAnalise(rs.getString("processo_analise"));
 				m.setProcessoColeta(rs.getString("processo_coleta"));
 				m.setValor(rs.getFloat("valor"));
+				Indicador i = new Indicador();
+				i.setId(Integer.valueOf(rs.getString("id_indicador")));
+				m.setIndicador(i);
 			}
 			ps.close();
 			rs.close();
@@ -108,7 +113,7 @@ public class MetricaDAO {
 	public void editarMetrica(Metrica m) throws SQLException
 	{
 		con = ConnectionFactory.getConnection();
-		String sql = "update metrica set nome = ?, tipo = ?, processo_coleta = ?, processo_analise = ? where id = ?"; 
+		String sql = "update metrica set nome = ?, tipo = ?, processo_coleta = ?, processo_analise = ?, id_indicador = ? where id = ?"; 
 		
 		
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -117,7 +122,9 @@ public class MetricaDAO {
 			ps.setString(2,m.getTipo());
 			ps.setString(3,m.getProcessoColeta());
 			ps.setString(4,m.getProcessoAnalise());
-			ps.setInt(5,m.getId());
+			ps.setInt(5,m.getIndicador().getId());
+			ps.setInt(6,m.getId());
+			
 			
 			ps.executeUpdate();
 			
