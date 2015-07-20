@@ -13,7 +13,9 @@ processo_coleta varchar(200),
 processo_analise varchar(200),
 valor float,
 tipo varchar(50),
-nome varchar(50));
+nome varchar(50),
+id_indicador int,
+foreign key(id_indicador) references indicador(id));
 
 create table formula(
 id int primary key not null auto_increment,
