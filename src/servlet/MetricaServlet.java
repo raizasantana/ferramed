@@ -78,7 +78,7 @@ private static final long serialVersionUID = 1L;
 //TODO Adicionar relação com o indicador 
 	private void criarMetrica(HttpServletRequest request,
 			HttpServletResponse response) {
-		String message = "Metrica inserida com sucesso.";
+		
 		
 		
 		Metrica m = new Metrica();
@@ -93,20 +93,10 @@ private static final long serialVersionUID = 1L;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			message = "Erro ao inserir metrica. Tente novamente mais tarde";
+			
 		}
 		
-		request.setAttribute("message", message);
-		
-		try {
-			request.getRequestDispatcher("/metrica/criarMetrica.jsp").forward(request, response);
-		} catch (ServletException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		listarMetricas(request, response);
 
 	}
 	
