@@ -30,7 +30,7 @@ foreign key(id_formula) references formula(id));
 create table coleta(
 id int primary key not null auto_increment,
 id_metrica int not null,
-valor int not null,
+valor float not null,
 observacao varchar(200),
 data date,
 foreign key (id_metrica) references metrica(id));
