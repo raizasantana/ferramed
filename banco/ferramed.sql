@@ -22,9 +22,11 @@ id int primary key not null auto_increment,
 nome varchar(50),
 metrica1_id int,
 metrica2_id int,
+metrica_associada int,
 operador varchar(1),
 foreign key(metrica1_id) references metrica(id),
-foreign key(metrica2_id) references metrica(id)
+foreign key(metrica2_id) references metrica(id),
+foreign key(metrica_associada) references metrica(id)
 );
 
 create table metrica_formula(

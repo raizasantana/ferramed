@@ -94,11 +94,14 @@ public class FormulaServlet extends HttpServlet{
 		MetricaDAO mDAO = new MetricaDAO();
 		int metrica1_id = Integer.valueOf(request.getParameter("metrica1_id"));
 		int metrica2_id = Integer.valueOf(request.getParameter("metrica2_id"));
+		int metricaAssociada = Integer.valueOf(request.getParameter("metricaAssociada"));
 		Metrica m1 = mDAO.getMetrica(metrica1_id);
 		Metrica m2 = mDAO.getMetrica(metrica2_id);
+		Metrica mA = mDAO.getMetrica(metricaAssociada);
 		
 		f.setMetrica1(m1);
 		f.setMetrica2(m2);
+		f.setMetricaAssociada(mA);
 		f.setOperador(request.getParameter("operador"));
 
 		
@@ -128,8 +131,12 @@ public class FormulaServlet extends HttpServlet{
 	private void listarMetrica(HttpServletRequest request, HttpServletResponse response){
 		MetricaDAO mDao = new MetricaDAO();
 		List<Metrica> metricas = mDao.listarMetricasCompostas();
-		request.setAttribute("metricas", metricas);
 		
+		request.setAttribute("metricasComp", metricas);
+		
+		
+		
+		request.setAttribute("metricas", mDao.listarMetricas());
 		List<String> operadores = new ArrayList<String>();
 		operadores.add("");
 		operadores.add("-");
@@ -177,7 +184,11 @@ public class FormulaServlet extends HttpServlet{
 		int id = Integer.valueOf(request.getParameter("id"));
 		MetricaDAO mDao = new MetricaDAO();
 		List<Metrica> metricas = mDao.listarMetricasCompostas();
-		request.setAttribute("metricas", metricas);
+		request.setAttribute("metricasComp", metricas);
+		
+		
+		
+		request.setAttribute("metricas", mDao.listarMetricas());
 		
 		List<String> operadores = new ArrayList<String>();
 		operadores.add("");

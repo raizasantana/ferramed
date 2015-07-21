@@ -35,7 +35,7 @@
 	<form action="formula" method="post" id="form1" class="form-horizontal">
 		<input type="hidden" name="acao" value="Criar" id="acao"/>
 		<p>Nome: <input type="text" id="nome" name="nome" maxlength="50"></p>
-		<p> Metrica Associada
+		<p> Metrica Associada: 
 		<select id="metricaAssociada" name="metricaAssociada">
 			<c:forEach var="metricaC" items="${metricasComp}">
 				<option value=${ metricaC.id }> ${ metricaC.nome }</option>

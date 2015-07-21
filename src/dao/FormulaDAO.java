@@ -16,7 +16,7 @@ public class FormulaDAO {
 		
 		con = ConnectionFactory.getConnection();
 		
-		String sql = "INSERT INTO formula (nome, metrica1_id, metrica2_id,operador) values (?,?,?,?)";
+		String sql = "INSERT INTO formula (nome, metrica1_id, metrica2_id,operador, metrica_associada) values (?,?,?,?,?)";
 		
 	
 		PreparedStatement ps = con.prepareStatement(sql);
@@ -24,6 +24,7 @@ public class FormulaDAO {
 		ps.setInt(2, f.getMetrica1().getId());
 		ps.setInt(3, f.getMetrica2().getId());
 		ps.setString(4,f.getOperador());
+		ps.setInt(5,f.getMetricaAssociada().getId());
 		ps.executeUpdate();
 		
 		ps.close();
@@ -47,11 +48,14 @@ public class FormulaDAO {
 			f.setNome(rs.getString("nome"));
 			Metrica m1 = new Metrica();
 			Metrica m2 = new Metrica();
+			Metrica mA = new Metrica();
 			MetricaDAO mDAO = new MetricaDAO();
 			m1 = mDAO.getMetrica(rs.getInt("metrica1_id"));
 			m2 = mDAO.getMetrica(rs.getInt("metrica2_id"));
+			mA = mDAO.getMetrica(rs.getInt("metrica_associada"));
 			f.setMetrica1(m1);
 			f.setMetrica2(m2);
+			f.setMetricaAssociada(mA);
 			f.setOperador(rs.getString("operador"));
 						
 			formulas.add(f);
@@ -80,11 +84,14 @@ public class FormulaDAO {
 			f.setNome(rs.getString("nome"));
 			Metrica m1 = new Metrica();
 			Metrica m2 = new Metrica();
+			Metrica mA = new Metrica();
 			MetricaDAO mDAO = new MetricaDAO();
 			m1 = mDAO.getMetrica(rs.getInt("metrica1_id"));
 			m2 = mDAO.getMetrica(rs.getInt("metrica2_id"));
+			mA = mDAO.getMetrica(rs.getInt("metrica_associada"));
 			f.setMetrica1(m1);
 			f.setMetrica2(m2);
+			f.setMetricaAssociada(mA);
 			f.setOperador(rs.getString("operador"));
 		}
 		ps.close();
@@ -96,7 +103,7 @@ public class FormulaDAO {
 	public void editarFormula(Formula f) throws SQLException
 	{
 		con = ConnectionFactory.getConnection();
-		String sql = "update formula set nome = ?, metrica1_id = ?, metrica2_id = ?, operador = ? where id = ?"; 
+		String sql = "update formula set nome = ?, metrica1_id = ?, metrica2_id = ?, operador = ?, metrica_associada = ? where id = ?"; 
 		
 		
 			PreparedStatement ps = con.prepareStatement(sql);
@@ -105,7 +112,9 @@ public class FormulaDAO {
 			ps.setInt(2,f.getMetrica1().getId());
 			ps.setInt(3,f.getMetrica2().getId());
 			ps.setString(4,f.getOperador());
-			ps.setInt(5,f.getId());
+			ps.setInt(5,f.getMetricaAssociada().getId());
+			ps.setInt(6,f.getId());
+			
 			
 			ps.executeUpdate();
 			

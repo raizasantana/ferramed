@@ -6,14 +6,24 @@ public class Formula {
 	
 	
 	private int id;
-	private String nome;
-	private Metrica metrica1;
-	private Metrica metrica2;
-	private String operador;
+	private String nome, operador;
+	private Metrica metrica1, metrica2, metricaAssociada;
+	
 	
 	public Formula(){
 		
 	}
+
+	
+	public Metrica getMetricaAssociada() {
+		return metricaAssociada;
+	}
+
+
+	public void setMetricaAssociada(Metrica metricaAssociada) {
+		this.metricaAssociada = metricaAssociada;
+	}
+
 
 	public int getId() {
 		return id;
