@@ -5,21 +5,22 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Criar Metrica</title>
+<title>Editar Metrica</title>
 </head>
-<!-- TODO Adicoinar relacao com o indicador--> 
+<body>
 <body>
 <a href="../index.html"><h4>Home</h4></a>
 	<form action="metrica" method="post" id="form1">
-		<input type="hidden" name="acao" value="Criar" id="acao"/>
-		<p>Nome: <input type="text" id="nome" name="nome" maxlength="50"></p>
-		<p>Processo de coleta: <input type="text" id="processoColeta" name="processoColeta" maxlength="2000"></p>
-		<p>Processo de analise: <input type="text" id="processoAnalise" name="processoAnalise" maxlength="2000"></p>
+		<input type="hidden" name="acao" value="atualizarMetrica" id="acao"/>
+		<input type="text" id="id" name="id" value="${metrica_id}" style="display:none">
+		<p>Nome: <input type="text" id="nome" name="nome" maxlength="50" value="${metrica_nome }"></p>
+		<p>Processo de coleta: <input type="text" id="processoColeta" name="processoColeta" maxlength="2000" value="${metrica_processoColeta }"></p>
+		<p>Processo de analise: <input type="text" id="processoAnalise" name="processoAnalise" maxlength="2000" value="${metrica_processoAnalise }"></p>
 		<p> Tipo <select id="tipoMetrica" name="tipoMetrica">
 					<option value="SIMPLES"> Metrica Simples</option>
 					<option value="COMPOSTA"> Metrica Composta</option>
 				</select></p>
-		<input type="submit"  value="Criar Metrica	">
+		<input type="submit"  value="Salvar Metrica">
 		
 		</form>
 		<c:if test="${message!=null}">

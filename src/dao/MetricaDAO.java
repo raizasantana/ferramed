@@ -39,7 +39,7 @@ public class MetricaDAO {
 	public ArrayList<Metrica> listarMetricas()
 	{
 		con = ConnectionFactory.getConnection();
-		ArrayList<Metrica> ms = null;
+		ArrayList<Metrica> ms = new ArrayList<Metrica>();
 		
 		String sql = "select * from metrica";
 		
@@ -55,7 +55,7 @@ public class MetricaDAO {
 				m.setTipo(rs.getString("tipo"));
 				m.setProcessoAnalise(rs.getString("processo_analise"));
 				m.setProcessoColeta(rs.getString("processo_coleta"));
-				m.setValor(rs.getFloat("valor"));
+				//m.setValor(rs.getFloat("valor"));
 				m.setNome(rs.getString("nome"));
 				
 				ms.add(m);
@@ -88,6 +88,7 @@ public class MetricaDAO {
 			if(rs.next())
 			{
 				m = new Metrica();
+				m.setId(rs.getInt("id"));
 				m.setNome(rs.getString("nome"));
 				m.setProcessoAnalise(rs.getString("processo_analise"));
 				m.setProcessoColeta(rs.getString("processo_coleta"));
@@ -102,6 +103,64 @@ public class MetricaDAO {
 		}
 		
 		return m;
+	}
+	
+	public void editarMetrica(Metrica m) throws SQLException
+	{
+		con = ConnectionFactory.getConnection();
+		String sql = "update metrica set nome = ?, tipo = ?, processo_coleta = ?, processo_analise = ? where id = ?"; 
+		
+		
+			PreparedStatement ps = con.prepareStatement(sql);
+			
+			ps.setString(1,m.getNome());
+			ps.setString(2,m.getTipo());
+			ps.setString(3,m.getProcessoColeta());
+			ps.setString(4,m.getProcessoAnalise());
+			ps.setInt(5,m.getId());
+			
+			ps.executeUpdate();
+			
+			ps.close();
+			
+			con.close();
+		
+	}
+	
+	public ArrayList<Metrica> listarMetricasCompostas()
+	{
+		con = ConnectionFactory.getConnection();
+		ArrayList<Metrica> ms = new ArrayList<Metrica>();
+		
+		String sql = "select * from metrica where tipo = 'COMPOSTA'";
+		
+
+		try {
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			
+			while(rs.next())
+			{
+				Metrica m = new Metrica();
+				m.setId(rs.getInt("id"));
+				m.setTipo(rs.getString("tipo"));
+				m.setProcessoAnalise(rs.getString("processo_analise"));
+				m.setProcessoColeta(rs.getString("processo_coleta"));
+				//m.setValor(rs.getFloat("valor"));
+				m.setNome(rs.getString("nome"));
+				
+				ms.add(m);
+			}
+			ps.close();
+			rs.close();
+			con.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return ms;
+		
 	}
 	
 }
