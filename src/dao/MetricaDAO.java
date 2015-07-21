@@ -74,6 +74,42 @@ public class MetricaDAO {
 		
 	}
 	
+	public ArrayList<Metrica> listarMetricasCompostas()
+		{
+			con = ConnectionFactory.getConnection();
+			ArrayList<Metrica> ms = new ArrayList<Metrica>();
+			
+			String sql = "select * from metrica where tipo = 'COMPOSTA'";
+			
+	
+			try {
+				PreparedStatement ps = con.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery();
+				
+				while(rs.next())
+				{
+					Metrica m = new Metrica();
+					m.setId(rs.getInt("id"));
+					m.setTipo(rs.getString("tipo"));
+					m.setProcessoAnalise(rs.getString("processo_analise"));
+					m.setProcessoColeta(rs.getString("processo_coleta"));
+					//m.setValor(rs.getFloat("valor"));
+					m.setNome(rs.getString("nome"));
+					
+					ms.add(m);
+				}
+				ps.close();
+				rs.close();
+				con.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return ms;
+			
+		}
+	
 	public Metrica getMetrica(int id)
 	{
 		con = ConnectionFactory.getConnection();
