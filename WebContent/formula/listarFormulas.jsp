@@ -4,13 +4,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <link rel="stylesheet" type="text/css" href="../css/tableStyleGenerator.css">
+<link rel="stylesheet" type="text/css" href="../css/tableStyleGenerator.css">
+<head>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootswatch.min.css">
+ <script src="../../js/bootstrap.min.js"></script>
+    <script src="js/bootswatch.js"></script>
 <head>
 
 <title>Lista de Fórmulas</title>
 </head>
 <body>
+	<div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">FerrAMed</a>
+          
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+        </div>
+      </div>
+    </div>
+<div align="center">
+<br>
+<br>
+<br>
 	<div id="listarFormulas" name="acao" value="listar">
-		<table class='CSSTableGenerator'>
+		<table class="table table-striped table-hover">
 			<tr>
 				<td>NOME</td>
 				<td>1ª MÉTRICA</td>
@@ -33,7 +54,8 @@
 			
 		</table>
 		<br/>
-		<center><a class="button" href="formula?acao=listarMetrica">Nova Formula</a><center>
+		<center><a  class="btn btn-success"  href="formula?acao=listarMetrica">Nova Formula</a><center>
+	</div>
 	</div>
 </body>
 </html> 
