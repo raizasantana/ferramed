@@ -4,13 +4,33 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootswatch.min.css">
+ 
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="js/bootswatch.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/tableStyleGenerator.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Listar indicadores</title>
 </head>
 <body>
+<div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">FerrAMed</a>
+          
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+        </div>
+      </div>
+    </div>
+<div align="center">
+<br>
+<br>
+<br>
 <div id="listarIndicadores" name="acao" value="Listar">
-		<table class='CSSTableGenerator'>
+		<table class="table table-striped table-hover">
 			<tr>
 				<td>DESCRICAO</td>
 				<td>META</td>
@@ -30,7 +50,7 @@
 			
 		</table>
 		<br/>
-		<center><a class="button" href="criarIndicador.jsp"">Nova Indicador</a><center>
+		<center><a  href="criarIndicador.jsp" class="btn btn-success">Novo Indicador</a><center>
 	</div>
 
 </body>

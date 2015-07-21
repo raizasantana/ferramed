@@ -4,13 +4,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootswatch.min.css">
+ 
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="js/bootswatch.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Editar Metrica</title>
 </head>
 <body>
 <body>
-<a href="../index.html"><h4>Home</h4></a>
-	<form action="metrica" method="post" id="form1">
+<div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">FerrAMed</a>
+          
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+        </div>
+      </div>
+    </div>
+<div align="center">
+<br>
+<br>
+<br>
+<br>
+<br>
+	<form action="metrica" method="post" id="form1" class="form-horizontal">
 		<input type="hidden" name="acao" value="atualizarMetrica" id="acao"/>
 		<input type="text" id="id" name="id" value="${metrica_id}" style="display:none">
 		<p>Nome: <input type="text" id="nome" name="nome" maxlength="50" value="${metrica_nome }"></p>
@@ -20,7 +41,7 @@
 					<c:forEach var="indicador" items="${indicadores}">
 						<c:choose>
 							<c:when test="${metrica_id_indicador == indicador.id}">
-								<option value=${ indicador.id } selected="selected"> ${ indicador.descricao }</option>
+								<option value=${ indicador.id } selected="selected">${ indicador.descricao }</option>
 							</c:when>
 							<c:otherwise>
 								<option value=${ indicador.id }> ${ indicador.descricao }</option>
@@ -36,12 +57,12 @@
 					<option value="SIMPLES"> Metrica Simples</option>
 					<option value="COMPOSTA"> Metrica Composta</option>
 				</select></p>
-		<input type="submit"  value="Salvar Metrica">
+		<input type="submit"  value="Salvar Metrica" class="btn btn-success">
 		
 		</form>
 		<c:if test="${message!=null}">
     	<h1>${message}</h1>
 	</c:if>
-		
+		</div>
 </body>
 </html>

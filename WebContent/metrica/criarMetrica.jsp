@@ -4,13 +4,34 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+<link rel="stylesheet" href="../css/bootswatch.min.css">
+ 
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="js/bootswatch.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Criar Metrica</title>
 </head>
 <!-- TODO Adicoinar relacao com o indicador--> 
 <body>
-<a href="../index.html"><h4>Home</h4></a>
-	<form action="metrica" method="post" id="form1">
+<div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">FerrAMed</a>
+          
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+
+        </div>
+      </div>
+    </div>
+<div align="center">
+<br>
+<br>
+<br>
+<br>
+<br>
+	<form action="metrica" method="post" id="form1" class="form-horizontal">
 		
 		<input type="hidden" name="acao" value="Criar" id="acao"/>
 		
@@ -27,7 +48,7 @@
 					<option value="SIMPLES"> Metrica Simples</option>
 					<option value="COMPOSTA"> Metrica Composta</option>
 				</select></p>
-		<input type="submit"  value="Criar Metrica	">
+		<input type="submit"  value="Criar Metrica" class="btn btn-success">
 		
 		</form>
 		<c:if test="${message!=null}">

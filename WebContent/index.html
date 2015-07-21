@@ -2,11 +2,79 @@
 <html>
 <head>
 
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/bootswatch.min.css">
+ <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootswatch.js"></script>
+  
+
 <meta charset="UTF-8">
 <title>Home - Ferramed</title>
 </head>
 <body>
 
+ <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../index.html" class="navbar-brand">FerrAMed</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Indicador <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="themes">
+                <li><a href="indicador/criarIndicador.jsp">Criar Indicador</a></li>
+                <li><a href="indicador/indicador?acao=listar">Listar Indicadores</a></li>
+               </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Metrica <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="metrica/metrica?acao=listarIndicadores">Criar Metrica</a></li>
+                <li><a href="metrica/metrica?acao=listarMetricas">Listar Metricas</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Coleta <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="http://jsfiddle.net/bootswatch/ndax7sh7/">Realizar Coleta</a></li>
+                <li><a href="./bootstrap.min.css">Listar Coletas</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="download">Formula <span class="caret"></span></a>
+              <ul class="dropdown-menu" aria-labelledby="download">
+                <li><a href="formula/formula?acao=listarMetrica">Criar Formula</a></li>
+                <li><a href="formula/formula?acao=listar">Listar Formulas</a></li>
+              </ul>
+            </li>
+          </ul>
+
+   
+
+        </div>
+      </div>
+    </div>
+    <br>
+<br>
+<br>
+<br>
+<br>
+<div   style="margin:20px">
+<p class="lead">  A FerrAMed, Ferramenta de Apoio para a Medição, ajudará você no controle da medição dos indicadores de qualidade de sua organização.</p>
+<p class="lead"> Nele, você poderá cadastrar os indicativos que deseja acompanhar, associar métricas que têm como função uma verificação concreta do desempenho desses indicadores, bem como registrar as coletas realizadas para tais métricas. </p>
+<p class="lead">No final, você poderá gerar relatórios que trarão um resumo das informações de qualidade obtidas em um dado período, dando apoio a uma boa gestão da qualidade. </p>
+<p class="lead">Fique à vontade para começar nas abas acima!</p>
+</div>
+<!-- 
 <h2>Indicadores</h2>
 <p><a href="indicador/criarIndicador.jsp">Criar indicador</a></p>
 <p><a href="indicador/indicador?acao=listar">Listar indicadores</a></p>
@@ -17,8 +85,8 @@
 <h2>Coleta</h2>
 <h2>Formulas</h2>
 <h2>Formulas</h2>
-<a href="formula/formula?acao=listarMetrica">Nova Fórmula</a>
-<a href="formula/formula?acao=listar">Listar Fórmulas</a>
-
+<p><a href="formula/formula?acao=listarMetrica">Nova Fórmula</a></p>
+<p><a href="formula/formula?acao=listar">Listar Fórmulas</a></p>
+ -->
 </body>
 </html>

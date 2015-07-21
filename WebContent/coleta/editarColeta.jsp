@@ -10,9 +10,8 @@
     <script src="../../js/bootstrap.min.js"></script>
     <script src="js/bootswatch.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Editar Indicador</title>
+<title>Editar coleta</title>
 </head>
-<body>
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -31,20 +30,22 @@
 <br>
 <br>
 <br>
-	<form action="indicador" method="post" id="form1" class="form-horizontal">
-		<input type="hidden" name="acao" value="atualizarIndicador" id="acao"/>
+
+	<form action="coleta" method="post" id="form1" class="form-horizontal">
+		<input type="hidden" name="acao" value="Editar" id="acao"/>
+		<input type="text" id="id" name="id" value="${coleta_id}" style="display:none">
+		<p>Métrica: <input type="text" id="nome" name="nome" maxlength="50" value="${coleta_metrica.nome}" readonly="readonly"></p>
 		
-		<input type="text" id="id" name="id" value="${indicador_id}" style="display:none">
 		
-		<p>Descricao: <input type="text" id="descricao" name="descricao" maxlength="50" value="${indicador_desc}"></p>
-		<p>Meta: <input type="text" id="meta" name="meta" maxlength="2000" value="${indicador_meta}"></p>
+		<p>Observação: <input type="text" id="observacao" name="observacao" maxlength="2000" value="${coleta_observacao}"></p>
+		<p>Valor: <input type="text" id="valorColeta" name="valorColeta" maxlength="20" value="${coleta_valor}"></p>
 		
-		<input type="submit"  value="Salvar Indicador" class="btn btn-success">
+		<input type="submit"  value="Salvar Coleta" class="btn btn-success">
 		
 		</form>
 		<c:if test="${message!=null}">
     	<h1>${message}</h1>
 	</c:if>
-		
+	</div>	
 </body>
-</html>
+</html> 

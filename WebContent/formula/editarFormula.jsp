@@ -10,7 +10,7 @@
 <body>
 <body>
 <a href="../index.html"><h4>Home</h4></a>
-	<form action="formula" method="post" id="form1">
+	<form action="formula" method="post" id="form1" class="form-horizontal">
 		<input type="hidden" name="acao" value="atualizarFormula" id="acao"/>
 		<input type="text" id="id" name="id" value="${formula_id}" style="display:none">
 		<p>Nome: <input type="text" id="nome" name="nome" maxlength="50" value="${formula_nome }"></p>

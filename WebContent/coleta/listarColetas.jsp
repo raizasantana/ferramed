@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -11,8 +11,10 @@
     <script src="../../js/bootstrap.min.js"></script>
     <script src="js/bootswatch.js"></script>
 <link rel="stylesheet" type="text/css" href="../css/tableStyleGenerator.css">
-<title>Lista de metricas</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Coletas Realizadas</title>
 </head>
+
 <body>
 <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -29,23 +31,23 @@
 <br>
 <br>
 <br>
-	<div id="listarMetricas" name="acao" value="Listar">
+	<div id="listarColetas" name="acao" value="Listar">
 		<table class="table table-striped table-hover">
 			<tr>
-				<td>NOME</td>
-				<td>PROCESSO DE ANALISE</td>
-				<td>PROCESSO DE COLETA</td>
-				<td>TIPO</td>
-				<td>ACAO</td>
+				<td>MÉTRICA</td>
+				<td>VALOR COLETADO</td>
+				<td>OBSERVAÇÃO</td>
+				<td>DATA</td>
+				<td>AÇÃO</td>
 			</tr>
-			<c:if test="${metricas!=null}">
-				<c:forEach var="metrica" items="${metricas}">
+			<c:if test="${coletas!=null}">
+				<c:forEach var="coleta" items="${coletas}">
 					<tr>
-						<td> ${metrica.nome} </td>
-						<td> ${metrica.processoAnalise} </td>
-						<td> ${metrica.processoColeta} </td>
-						<td> ${metrica.tipo} </td>
-						<td><center><a data-target="#conteudo" class="button" href="metrica?acao=editarMetrica&id=${metrica.id}">Editar</a><center></td>
+						<td> ${coleta.metrica.nome} </td>
+						<td> ${coleta.valor} </td>
+						<td> ${coleta.observacao} </td>
+						<td> ${coleta.data } </td>
+						<td><center><a data-target="#conteudo" class="button" href="coleta?acao=editarColeta&id=${coleta.id}">Editar</a><center></td>
 					</tr>
 					
 				</c:forEach>
@@ -53,7 +55,8 @@
 			
 		</table>
 		<br/>
-		<center><a href="criarMetrica.jsp" class="btn btn-success">Nova Metrica</a><center>
+		<center><a class="btn btn-success" href="coleta?acao=listarMetricas"">Realizar nova Coleta</a><center>
 	</div>
+</div>
 </body>
-</html>
+</html> 
