@@ -19,7 +19,12 @@ foreign key(id_indicador) references indicador(id));
 
 create table formula(
 id int primary key not null auto_increment,
-nome varchar(50)
+nome varchar(50),
+metrica1_id int,
+metrica2_id int,
+operador varchar(1),
+foreign key(metrica1_id) references metrica(id),
+foreign key(metrica2_id) references metrica(id)
 );
 
 create table metrica_formula(
